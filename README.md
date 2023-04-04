@@ -494,15 +494,15 @@ Para almacenar los usuarios y publicaciones de la red social vamos a usar las fu
 
 En este archivo tenemos las siguientes funciones:
 
-`login (email, password)`: Esta función devuelve true si existe un usuario con el correo y contraseña. Devuelve false si el usuario no existe o la contraseña es inválida.
+* `login (email, password)`: Esta función devuelve true si existe un usuario con el correo y contraseña. Devuelve false si el usuario no existe o la contraseña es inválida.
 
-`getLoggedInUser()`: Esta función devuelve el usuario conectado. Devuelve null si no hay ningún usuario registrado.
+* `getLoggedInUser()`: Esta función devuelve el usuario conectado. Devuelve null si no hay ningún usuario registrado.
 
-`logout()`: Esta función debe cerrar la sesión del usuario.
+* `logout()`: Esta función cierra la sesión del usuario.
 
-`register(email, password)`: Esta función debe registrar un nuevo usuario. Devuelve true si el usuario se ha registrado correctamente.   Debe arrojar un error si el usuario ya existe.
+* `register(email, password)`: Esta función registra un nuevo usuario. Devuelve true si el usuario se ha registrado correctamente. Lanza un error si el usuario ya existe.
 
-`getPosts()`: Esta función devuelve un array de posts. Cada entrada debe tener la siguiente estructura:
+* `getPosts()`: Esta función devuelve un array de posts. Cada elemento del arreglo tiene la siguiente estructura:
 
   `{
     id: string,
@@ -510,11 +510,11 @@ En este archivo tenemos las siguientes funciones:
     email: string
   }`
 
-`createPost(content, email)`: Esta función crea un nuevo post y devuelve su id
+* `createPost(content, email)`: Esta función crea un nuevo post y devuelve su id
 
-`editPost(idPost, content)`: Esta función edita el contenido de una entrada. Lanzar un error si el post no existe.
+* `editPost(idPost, content)`: Esta función edita el contenido de una entrada. Lanzar un error si el post no existe.
 
-`deletePost(idPost)`: Esta función elimina un post. Lanzar un error si el post no existe.
+* `deletePost(idPost)`: Esta función elimina un post. Lanzar un error si el post no existe.
 
 Otras:
 
