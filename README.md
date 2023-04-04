@@ -294,45 +294,11 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
   * [Pruebas con Usuarios 1 — ¿Qué, cuándo y para qué testeamos?](https://eugeniacasabona.medium.com/pruebas-con-usuarios-1-qu%C3%A9-cu%C3%A1ndo-y-para-qu%C3%A9-testeamos-7c3a89b4b5e7)
 </p></details>
 
-### Firebase
-
-- [ ] **Firebase Auth**
-
-  <details><summary>Links</summary><p>
-
-  * [Primeros pasos con Firebase Authentication en sitios web - Documentación oficial](https://firebase.google.com/docs/auth/web/start?hl=es)
-  * [Administra usuarios en Firebase (onAuthStateChanged)](https://firebase.google.com/docs/auth/web/manage-users?hl=es#get_the_currently_signed-in_user)
-</p></details>
-
-- [ ] **Firestore**
-
-  <details><summary>Links</summary><p>
-
-  * [Firestore - Documentación oficial](https://firebase.google.com/docs/firestore?hl=es)
-  * [Reglas de seguridad de Firestore - Documentación oficial](https://firebase.google.com/docs/rules?hl=es)
-  * [Obtén actualizaciones en tiempo real con Cloud Firestore - Documentación oficial](https://firebase.google.com/docs/firestore/query-data/listen?hl=es)
-</p></details>
-
 ## 4. Consideraciones generales
-
-* Este proyecto se debe trabajar en equipos de tres.
 
 * La lógica del proyecto debe estar implementada completamente en JavaScript
   (ES6+), HTML y CSS :smiley:. Para este proyecto **no está permitido** utilizar
   _frameworks_ o librerías de CSS y JS.
-
-* La división y organización del trabajo debe permitir, sin excepciones, que
-  **cada integrante** del equipo practique el aprendizaje de todo lo involucrado
-  en **cada historia**. _No se dividan el trabajo como en una fábrica._
-  - ¿Hasta acá has avanzado en tus proyectos con cierta fluidez y sin mayores
-    problemas? Sé generosa con tus compañeras, permíteles aprender y practicar
-    sin restricciones, aunque tome un poco más de tiempo. Aproveha de
-    _coachearlas_, de hacer _pair programming_, una de las mejores maneras de
-    aprender es explicando verbalmente.
-
-  - ¿Se te está haciendo difícil y te cuesta un poco más avanzar? No te quedes
-    con las partes "fáciles" del proyecto, conversa, negocia, exige tu oportunidad
-    para practicar y aprender lo que se te hace más difícil.
 
 * Solamente pueden trabajar en una única historia por vez, no pueden avanzar a
   la siguiente sin haber completado la anterior. La historia se completa cuando
@@ -418,8 +384,8 @@ tus H.U.:
 
 #### Creación de cuenta de usuario e inicio de sesión
 
-* _Login_ con Firebase:
-  - Para el _login_ y las publicaciones en el muro puedes utilizar [Firebase](https://firebase.google.com/products/database/)
+* _Login_:
+  - Para el _login_ y las publicaciones en el muro debes utilizar las funciones del archivo `src/lib/services.js`
   - Creación de cuenta de acceso y autenticación con cuenta de correo y
     contraseña, y también con una cuenta de Google.
 * Validaciones:
@@ -440,8 +406,6 @@ tus H.U.:
   - Al recargar la aplicación, se debe verificar si el usuario está _logueado_
     antes de mostrar contenido.
   - Poder publicar un _post_.
-  - Poder dar y quitar _like_ a una publicación. Máximo uno por usuario.
-  - Llevar un conteo de los _likes_.
   - Poder eliminar un post específico.
   - Pedir confirmación antes de eliminar un _post_.
   - Al dar _click_ para editar un _post_, debe cambiar el texto por un _input_
@@ -456,8 +420,7 @@ tus H.U.:
 * Contar con múltiples vistas. Para esto, tu aplicación debe ser una
  [Single Page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
 * Alterar y persistir datos. Los datos que agregues o modifiques deberán
-  persistir a lo largo de la aplicación. Te recomendamos que uses
-  [Firebase](https://firebase.google.com/) para eso también.
+  persistir a lo largo de la aplicación. Usa las funciones del archivo `src/lib/services.js` para esto.
 
 #### Pruebas unitarias (unit tests)
 
@@ -482,13 +445,8 @@ Las secciones llamadas _Hacker Edition_ son **opcionales**. Si **terminaste**
 con todo lo anterior y te queda tiempo, intenta completarlas. Así podrás
 profundizar y/o ejercitar más sobre los objetivos de aprendizaje del proyecto.
 
-* Permite crear posts con imágenes.
-* Permite buscar usuarios, agregar y eliminar "amigos".
-* Permite definir la privacidad de los _posts_ (público o solamente para amigos).
-* Permite ver su muro de cualquier usuario "no-amigo" (solamente los
-  posts _públicos_).
-* Permite comentar o responder una publicación.
-* Permite editar perfil.
+  * Poder dar y quitar _like_ a una publicación. Máximo uno por usuario.
+  * Llevar un conteo de los _likes_.
 
 ## 7. Entrega
 
@@ -532,17 +490,31 @@ de implementación.
 
 ### Escritura de datos
 
-En los proyectos anteriores hemos consumido (leído) datos, pero todavía no
-habíamos escrito datos (salvar cambios, crear datos, borrar, ...). En este
-proyecto tendrás que crear (salvar) nuevos datos, así como leer, actualizar y
-modificar datos existentes. Estos datos se podrán guardar de forma remota
-usando [Firebase](https://firebase.google.com/).
+Para almacenar los usuarios y publicaciones de la red social vamos a usar las funciones del archivo `src/lib/services.js`.
 
-Para usar Firebase hay que crear un proyecto en la [consola](https://console.firebase.google.com/) de Firebase e
-instalar la dependencia `firebase` utilizando `npm`.
-Lee [las instrucciones paso a paso aqui](https://firebase.google.com/docs/web/setup).
+En este archivo tenemos las siguientes funciones:
 
-Nota: Asegurense de utilizar la Web versión 9 de firebase. 
+`login (email, password)`: Esta función devuelve true si existe un usuario con el correo y contraseña. Devuelve false si el usuario no existe o la contraseña es inválida.
+
+`getLoggedInUser()`: Esta función devuelve el usuario conectado. Devuelve null si no hay ningún usuario registrado.
+
+`logout()`: Esta función debe cerrar la sesión del usuario.
+
+`register(email, password)`: Esta función debe registrar un nuevo usuario. Devuelve true si el usuario se ha registrado correctamente.   Debe arrojar un error si el usuario ya existe.
+
+`getPosts()`: Esta función devuelve un array de posts. Cada entrada debe tener la siguiente estructura:
+
+  `{
+    id: string,
+    contenido: string,
+    email: string
+  }`
+
+`createPost(content, email)`: Esta función crea un nuevo post y devuelve su id
+
+`editPost(idPost, content)`: Esta función edita el contenido de una entrada. Lanzar un error si el post no existe.
+
+`deletePost(idPost)`: Esta función elimina un post. Lanzar un error si el post no existe.
 
 Otras:
 
