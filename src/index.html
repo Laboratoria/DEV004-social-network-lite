@@ -1,12 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <script type="module" src="main.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>SportLink Nutrition</title>
+    <!-- Latest compiled and minified CSS -->
+		<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet"> <!-- Aqui uso cuatro hojas de estilo CSS a la página web: una fuente de Google, dos hojas de estilo de Bootstrap y una hoja de estilo personalizada -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" href="mystyle.css">
+  </head>
+  <body>
+
+    <!-- ESTA ES LA PANTALLA DE INICIO -->
+    <div class="container-fluid first-screen">
+    
+      <!-- PRIMERA COLUMNA -->
+      <div class="row">
+        <div class="hidden-xs hidden-sm col-md-5 col-lg-5 firstCol">
+          <h4><strong>SportLink Nutrition, la red social para deportistas.</strong></h4>
+          <p class="txtcol">Descubre, explora y comparte las mejores experiencias deportivas y de nutrición.</p><br>
+          <h4><strong>¿Cómo funciona?</strong></h4>
+          <div class="row">
+            <div class="col-md-1 col-lg-1">
+              <i class="fa fa-compass" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-11 col-lg-11">
+              <h4>Comparte tus experiencias</h4>
+              <p class="txtcol"> Compartir tus fotos y videos de las actividades deportivas.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-lg-1">
+              <i class="fa fa-map-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-11 col-lg-11">
+              <h4>Explora nuevas rutas</h4>
+              <p class="txtcol">crear eventos para practicar juntos, Encuentra nuevos lugares para practicar.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 col-lg-1">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-11 col-lg-11">
+              <h4>Sigue a otros deportistas</h4>
+              <p class="txtcol">Comparte consejos y recomendaciones sobre equipo y técnica, conecta con marcas y tiendas especializadas en tu deporte de preferencia.</p>
+            </div>
+          </div>
+        </div><!-- fin primera columna -->
+        <!-- SEGUNDA COLUMNA -->
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 secondCol">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 logoCol">
+              <img src="img/logo_verde_-removebg-preview.png" alt="logo">
+            </div>
+          </div>
+          <!--FORMULARIO DE AUTENTICACIÓN-->
+          <form id="form-autenticacion">
+            <!-- INPUT EMAIL -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <input id="email" class="form-control" type="text" name="email" placeholder="Email" value="">
+                </div>
+            </div>
+            <!-- INPUT PASSWORD -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" value="">
+              </div>
+            </div>
+            <!-- BOTON 2 -->  <!--estructura de diseño de tres filas utilizando Bootstrap--> 
+            <!--div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <input id="btnSingup" class="btn btn-init btn2" type="submit" value="Iniciar sesión">
+              </div>
+            </!--div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <input id="btnSingup" class="btn btn-init btn2" type="submit" value="registro">
+              </div>
+            </div>-->
+            <!-- PREGUNTA -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <p class="before-after-whiteLines text-center">¿No tienes cuenta?</p>
+              </div>
+            </div>
+            <!-- BOTON 1 -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <!--button-- class="btn-init">registro</!--button--> 
+                
+                  <!-- MODAL -->
+                  <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content--> <!--formulario de registro que aparece dentro de un modal (ventana emergente) tambien de boostrap .-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Regístrate aquí</h4>
+                <img class="center-block" src="img/logo_verde_-removebg-preview.png" alt="logo">
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="emailRegistro" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="passwordRegistro" placeholder="Password">
+                  </div>
+                  <span id="fileSelector">
+                    <label class="btnProfile btn" for="upload-profile">
+                      <input id="upload-profile" type="file" accept="image/x-png, image/gif, image/jpeg">
+                      <i class="fa fa-upload" aria-hidden="true"></i>Sube tu foto de perfil
+                    </label>
+                  </span>
+                  <div>
+                    <textarea id="description" placeholder="Cuéntanos algo sobre ti..."></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="reset" class="btn" id="botonEnviar" onclick="registrar()">Enviar</button> 
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</form>
+        </div> <!--segunda columna -->
+     
+        <!-- buscador por deporte 
+      <section>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <select class="form-control" id="deporte-menu">
+              <option value="Seleccion">¿Qué deporte estás buscando?</option>
+              <option value="gimnasia">Gimnasia</option>
+              <option value="Atletismo">Atletismo</option>
+              <option value="Baloncesto">Baloncesto</option>
+              <option value="Hockey">Hockey sobre hielo</option>
+              <option value="Patinaje">Patinaje artístico</option>
+              <option value="Remo">Remo</option>
+              <option value="Rugby">Rugby 7</option>
+              <option value="Judo">Judo</option>
+              <option value="Karate">Karate</option>
+              <option value="Crossfit">Crossfit</option>
+              <option value="Boxeo">Boxeo</option>
+              <option value="Fútbol">Fútbol</option>
+              <option value="Waterpolo">Waterpolo</option>
+              <option value="Tenis">Tenis</option>
+              <option value="Ciclismo">Ciclismo en ruta</option>
+             </select>
+           </div> -->
+         </div>
+         
+    </div>
+    <section></section>
+<div id="root"></div>
+<script type="module" src="./lib/main.js"></script>
 </body>
+
 </html>

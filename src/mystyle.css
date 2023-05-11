@@ -1,0 +1,192 @@
+*{
+    margin:  10;
+    padding: 10;
+  }
+  /*-----Estilos de la pantalla de inicio movil-----*/
+  .first-screen{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("img/fondo.png") no-repeat;
+    background-size:cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    color: #fff;
+  }
+  /*-----Estilos primera columna-----*/
+  .firstCol{
+    border-right: 0.1em solid #fff;
+    margin-top: 8em;
+    padding-left: 8em;
+    padding-right: 3em;
+  }
+  .txtcol{
+    font-size: 1.2em;
+  }
+  /*-----Estilos segunda columna-----*/
+  .secondCol{
+    padding-left: 4em;
+  }
+  #form-autenticacion{
+    padding-top: 4em;
+  }
+
+  .form-control{
+    margin-bottom: 1em;
+    color: darkgreen;
+  }
+  .loginButtons{
+    padding-top: ;
+  }
+  .btn-init{
+    margin-bottom: 1em;
+    width: 100%;
+    background-color: darkgreen;
+    border: none;
+    color: #fff;
+  }
+  .modal-header{
+    text-align: center;
+  }
+  #description{
+    border: 1px solid darkgreen;
+    border-radius: 2px; 
+  }
+  /*-----Estilos delperfil de usuario movil-----*/
+  .logoVerdePerfil{
+    padding-top: 2em;
+    width: 6%;
+  }
+  .userProfileMovil{
+    height: 700px;
+  }
+  .perfirMovil{
+    color: #fff;
+    background-color: darkgreen;
+    vertical-align: center;
+  }
+  .imgProfile{
+    width: 35%;
+    margin-bottom: 1em;
+  }
+  .perfilMovilTitle{
+    font-size: 1.2em;
+    padding-bottom: 0.2em;
+  }
+  header{
+    position: fixed;
+    z-index: 5;
+    background-color: #fff;
+    width: 100%;
+  }
+  .header-row{
+    background-color: #fff;
+    width: 100%;
+  }
+  section{
+    margin-top: 6em;
+  }
+  .news{
+    margin-bottom: 5em;
+  }
+  .footer-row{
+    background-color: #fff;
+    /* position: fixed;
+    bottom: 0;  */
+    /* width: 100%; */
+  }
+  #logo-verde{
+    width: 5em;
+    text-align: center;
+  }
+  span{
+    font-size: 3em;
+    color: darkgreen;
+  }
+  textarea {
+      width: 100%;
+      height: 4em;
+      color: #4E4D53;
+      font-size: 15px;
+      padding: 1em;
+      border-radius: 1em;
+      border: none;
+      margin: 0 auto;
+  }
+  #imgLoad{
+    width: 25em;
+    margin-bottom: 1em;
+  }
+  .newsfeed{
+    background-color: #E1F0EB;
+  }
+  .box-post{
+    background-color: #fff;
+    border: 1px solid #E1F0EB;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    padding: 1em;
+  }
+  /* clase que se le agrega a la imagen en el newsfeed para separar las publicaciones*/
+  .margen-img{
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+  .color-user{
+    color: #0F7C5A;
+    font-weight: bold;
+    font-size: 1em;
+  }
+  .btnProfile{
+    border: none;
+    color: white;
+    background-color: darkgreen;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-weight: bold;
+    font-size: 0.3em;
+  }
+  .btnProfile input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .btnUpload {
+    border: 1px solid darkgreen;
+    color: darkgreen;
+    background-color: white;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-size: 30%;
+  }
+  .btnUpload input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  #botonEnviar{
+    color: white;
+    background-color: darkgreen;
+  }
+  .btnData{
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: darkgreen;
+  }
+  .btnSeguir{
+    border: none;
+    padding: 0.5em 0.5em;
+    border-radius: 0.5em;
+    font-size: 0.8em;
+    background-color: darkgreen;
+    color: white;
+  }
+  .followTitle{
+    color: darkgreen;
+    font-weight: bold;
+  }
+  
