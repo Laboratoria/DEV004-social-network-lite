@@ -101,15 +101,16 @@
     font-size: 3em;
     color: darkgreen;
   }
+  
   textarea {
-      width: 100%;
-      height: 4em;
-      color: #4E4D53;
-      font-size: 15px;
-      padding: 1em;
-      border-radius: 1em;
-      border: none;
-      margin: 0 auto;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+  
   }
   #imgLoad{
     width: 25em;
@@ -126,6 +127,8 @@
     padding: 1em;
   }
   /* clase que se le agrega a la imagen en el newsfeed para separar las publicaciones*/
+  
+   
   .margen-img{
     margin-top: 1em;
     margin-bottom: 2em;
@@ -168,25 +171,71 @@
     color: white;
     background-color: darkgreen;
   }
-  .btnData{
-    border: none;
-    padding: 0.5em 1em;
-    border-radius: 0.5em;
-    font-size: 1em;
-    font-weight: bold;
-    color: white;
-    background-color: darkgreen;
-  }
-  .btnSeguir{
-    border: none;
-    padding: 0.5em 0.5em;
-    border-radius: 0.5em;
-    font-size: 0.8em;
-    background-color: darkgreen;
-    color: white;
-  }
-  .followTitle{
-    color: darkgreen;
-    font-weight: bold;
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
   }
   
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("img/conjunto-alimentos-nutritivos-articulos-deportivos.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Altura igual a la altura de la ventana */
+    color: #fff;
+  }
+  
+  textarea {
+    width: 50%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  button#publicar {
+    padding: 10px 20px;
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  article {
+    margin-top: 20px;
+  }
+  
+  article p {
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  article button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #0084ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  article button[value]:last-child {
+    background-color: #4caf50;
+  }
+  
+  
+ 

@@ -1,8 +1,14 @@
+
 export const barrier = () => {
-    // crea contenedor principal
-    const h1 = document.createElement('h1');
-    // modifica propiedades de los elemento
-    h1.textContent = 'dentro de barrier';
-    // retorna el elemento
-    return h1;
-  }
+  // Crea el contenedor principal
+
+    const Container = document.createElement('section')
+    Container.innerHTML= `<textarea id="texto"></textarea>
+    <button onclick="publicar()">Publicar</button>`
+
+  //   function publicar() {
+  //     var texto = document.getElementById("texto").value;
+  //     alert("El texto que has introducido es: " + texto)
+  // }
+  return Container;
+}

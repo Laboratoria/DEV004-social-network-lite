@@ -1,3 +1,5 @@
+import { register } from "../peaches/register";
+
 const ROUTES = {};
 
 /*
@@ -5,11 +7,20 @@ const ROUTES = {};
  */
 
 export const onNavigate = (pathname) => {
-  const path = typeof ROUTES[pathname] !== 'function' ? pathname : '/';
-  window.history.pushState({}, path, window.location.origin + pathname);
+  
+  
   const rootSection = document.getElementById('root');
   rootSection.innerHTML = '';
-  rootSection.append(ROUTES[pathname]());
+  if(pathname === '/register'){
+    rootSection.append(ROUTES[pathname]());
+  }
+  if (pathname === '/'){
+    rootSection.append(ROUTES[pathname]());
+  }
+  if (pathname === '/wall'){
+    rootSection.append(ROUTES[pathname]());
+  }
+  
 };
 
 export const addRoutes = (routes) => {

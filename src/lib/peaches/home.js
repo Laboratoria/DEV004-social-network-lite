@@ -1,54 +1,146 @@
-import { onNavigate } from '../router/index.js';
-
+import { onNavigate } from "../router/index.js";
+import { login } from "../services.js";
 export const home = () => {
-  // crea contenedor principal
-  const article = document.createElement('article');
-  
-  // aqui estoy creando los elementos HTML necesarios
-  const divRow1 = document.createElement('div');
-  divRow1.classList.add('row');
-  
-  const divCol1 = document.createElement('div');
-  divCol1.classList.add('col-xs-12', 'col-sm-12', 'col-md-6', 'col-lg-8');
-  
-  const inputLogin = document.createElement('input');
-  inputLogin.id = 'btnSingup';
-  inputLogin.classList.add('btn', 'btn-init', 'btn2');
-  inputLogin.type = 'submit';
-  inputLogin.value = 'Iniciar sesión';
-  
-  const divRow2 = document.createElement('div');
-  divRow2.classList.add('row');
-  
-  const divCol2 = document.createElement('div');
-  divCol2.classList.add('col-xs-12', 'col-sm-12', 'col-md-6', 'col-lg-8');
-  
-  const inputRegistro = document.createElement('input');
-  inputRegistro.id = 'btnSingup';
-  inputRegistro.classList.add('btn', 'btn-init', 'btn2');
-  inputRegistro.type = 'submit';
-  inputRegistro.value = 'Registro';
-  
-  // añade evento a los botones
-  inputLogin.addEventListener('click', () => {
+  const div = document.createElement("div");
+  div.innerHTML = `<div class="container-fluid first-screen">
+    
+ <!-- PRIMERA COLUMNA -->
+ <div class="row">
+   <div class="hidden-xs hidden-sm col-md-5 col-lg-5 firstCol">
+     <h4><strong>SportLink Nutrition, la red social para deportistas.</strong></h4>
+     <p class="txtcol">Descubre, explora y comparte las mejores experiencias deportivas y de nutrición.</p><br>
+     <h4><strong>¿Cómo funciona?</strong></h4>
+     <div class="row">
+       <div class="col-md-1 col-lg-1">
+         <i class="fa fa-compass" aria-hidden="true"></i>
+       </div>
+       <div class="col-md-11 col-lg-11">
+         <h4>Comparte tus experiencias</h4>
+         <p class="txtcol"> Compartir tus fotos y videos de las actividades deportivas.</p>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-md-1 col-lg-1">
+         <i class="fa fa-map-o" aria-hidden="true"></i>
+       </div>
+       <div class="col-md-11 col-lg-11">
+         <h4>Explora nuevas rutas</h4>
+         <p class="txtcol">crear eventos para practicar juntos, Encuentra nuevos lugares para practicar.</p>
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-md-1 col-lg-1">
+         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+       </div>
+       <div class="col-md-11 col-lg-11">
+         <h4>Sigue a otros deportistas</h4>
+         <p class="txtcol">Comparte consejos y recomendaciones sobre equipo y técnica, conecta con marcas y tiendas especializadas en tu deporte de preferencia.</p>
+       </div>
+     </div>
+   </div><!-- fin primera columna -->
+   <!-- SEGUNDA COLUMNA -->
+   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 secondCol">
+     <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 logoCol">
+         <img src="img/logo_verde_-removebg-preview.png" alt="logo">
+       </div>
+     </div>
+     <!--FORMULARIO DE AUTENTICACIÓN-->
+     <form id="form-autenticacion">
+       <!-- INPUT EMAIL -->
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <input id="email" class="form-control" type="text" name="email" placeholder="Email" value="">
+           </div>
+       </div>
+       <!-- INPUT PASSWORD -->
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" value="">
+         </div>
+       </div>
+       <!-- BOTON 2 -->  <!--estructura de diseño de tres filas utilizando Bootstrap--> 
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <input id="btnSingin" class="btn btn-init btn2" type="button" value="Iniciar sesión">
+         </div>
+       </div>
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <input id="btnSingup" class="btn btn-init btn2" type="button" value="registro">
+         </div>
+       </div>
+       <!-- PREGUNTA -->
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <p class="before-after-whiteLines text-center">¿No tienes cuenta?</p>
+         </div>
+       </div>
+       <!-- BOTON 1 -->
+       <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           
+           
+             <!-- MODAL -->
+             <div id="myModal" class="modal fade" role="dialog">
+               <div class="modal-dialog">
+   </div> <!--segunda columna -->
+
+   <!-- buscador por deporte 
+ <section>
+   <div class="row">
+     <div class="col-xs-12 col-md-6 col-md-offset-3">
+       <select class="form-control" id="deporte-menu">
+         <option value="Seleccion">¿Qué deporte estás buscando?</option>
+         <option value="gimnasia">Gimnasia</option>
+         <option value="Atletismo">Atletismo</option>
+         <option value="Baloncesto">Baloncesto</option>
+         <option value="Hockey">Hockey sobre hielo</option>
+         <option value="Patinaje">Patinaje artístico</option>
+         <option value="Remo">Remo</option>
+         <option value="Rugby">Rugby 7</option>
+         <option value="Judo">Judo</option>
+         <option value="Karate">Karate</option>
+         <option value="Crossfit">Crossfit</option>
+         <option value="Boxeo">Boxeo</option>
+         <option value="Fútbol">Fútbol</option>
+         <option value="Waterpolo">Waterpolo</option>
+         <option value="Tenis">Tenis</option>
+         <option value="Ciclismo">Ciclismo en ruta</option>
+        </select>
+      </div> -->
+    </div>
+    
+</div>`;
+  const inputLogin = div.querySelector("#btnSingin");
+  inputLogin.addEventListener("click", () => {
     // llama funcion navigate y pasa string con la ruta
-    onNavigate('/login');
+    //Paso 1: Obtener el valor del input de email
+    const e = document.querySelector("#email").value;
+    console.log (e)
+    //const e = ....
+    //Paso 2: Obtener el valor del input de password
+    const p = document.querySelector("#password").value;
+    console.log (p)
+    //const p == .....
+    //Paso 3: Llamar la funcion login
+    const resultadoLogin = login(e, p);
+    console.log(resultadoLogin)
+    //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
+    if (resultadoLogin === true){
+      onNavigate('/wall')
+    }
+    //Paso 5: Si resultadoLogin es false entonces mostrar alerta
+    else {
+      alert('verifica tus datos')
+    }
   });
-  
-  inputRegistro.addEventListener('click', () => {
+  //const inputRegistro = document.getElementById ("btnSingup")
+  const inputRegistro = div.querySelector("#btnSingup");
+  inputRegistro.addEventListener("click", () => {
     // llama funcion navigate y pasa string con la ruta
-    onNavigate('/register');
+    onNavigate("/register");
   });
-  
-  // suma elementos al contenedor madre
-  divCol1.appendChild(inputLogin);
-  divRow1.appendChild(divCol1);
-  article.appendChild(divRow1);
-  
-  divCol2.appendChild(inputRegistro);
-  divRow2.appendChild(divCol2);
-  article.appendChild(divRow2);
-  
-  // retorna contenedor madre
-  return article;
+
+  return div;
 };
