@@ -1,5 +1,10 @@
+import { createUserWitheAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"
+import {auth} from '../router/firebase.js'
 import { onNavigate } from "../router/index.js";
 import { login } from "../services.js";
+import { async } from "regenerator-runtime";
+import { sortUserPlugins } from "vite";
+
 export const home = () => {
   const div = document.createElement("div");
   div.innerHTML = `<div class="container-fluid first-screen">
@@ -50,13 +55,13 @@ export const home = () => {
        <!-- INPUT EMAIL -->
        <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-           <input id="email" class="form-control" type="text" name="email" placeholder="Email" value="">
+           <input id="email" class="form-control" type="text" name="email" placeholder="Email" >
            </div>
        </div>
        <!-- INPUT PASSWORD -->
        <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-           <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" value="">
+           <input id="password" class="form-control" type="password" name="password" placeholder="Contraseña" >
          </div>
        </div>
        <!-- BOTON 2 -->  <!--estructura de diseño de tres filas utilizando Bootstrap--> 
@@ -113,20 +118,29 @@ export const home = () => {
     
 </div>`;
   const inputLogin = div.querySelector("#btnSingin");
-  inputLogin.addEventListener("click", () => {
+  inputLogin.addEventListener("click", async () => {
     // llama funcion navigate y pasa string con la ruta
     //Paso 1: Obtener el valor del input de email
-    const e = document.querySelector("#email").value;
-    console.log (e)
+    const email = document.querySelector("#email").value;
+    console.log (email)
     //const e = ....
     //Paso 2: Obtener el valor del input de password
     const p = document.querySelector("#password").value;
     console.log (p)
+
+    try{
+      userCredentials = await createUserWitheAndPassword( auth, email, p)
+      console.log(userCredentials);
+     } catch(error) {
+      console.log(error)
+     }
     //const p == .....
     //Paso 3: Llamar la funcion login
-    const resultadoLogin = login(e, p);
+    const resultadoLogin = login(email, p);
     console.log(resultadoLogin)
     //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
+    
+
     if (resultadoLogin === true){
       onNavigate('/wall')
     }
@@ -134,13 +148,19 @@ export const home = () => {
     else {
       alert('verifica tus datos')
     }
+
+   
+
   });
   //const inputRegistro = document.getElementById ("btnSingup")
   const inputRegistro = div.querySelector("#btnSingup");
   inputRegistro.addEventListener("click", () => {
     // llama funcion navigate y pasa string con la ruta
     onNavigate("/register");
+
+  
   });
 
+  
   return div;
 };
