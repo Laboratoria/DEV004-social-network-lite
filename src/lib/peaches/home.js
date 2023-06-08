@@ -1,9 +1,7 @@
-import { createUserWitheAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"
+import { createUserWithEmailAndPassword } from "firebase/auth"
 import {auth} from '../router/firebase.js'
 import { onNavigate } from "../router/index.js";
 import { login } from "../services.js";
-import { async } from "regenerator-runtime";
-import { sortUserPlugins } from "vite";
 
 export const home = () => {
   const div = document.createElement("div");
@@ -129,7 +127,7 @@ export const home = () => {
     console.log (p)
 
     try{
-      userCredentials = await createUserWitheAndPassword( auth, email, p)
+      userCredentials = await createUserWithEmailAndPassword( auth, email, p)
       console.log(userCredentials);
      } catch(error) {
       console.log(error)

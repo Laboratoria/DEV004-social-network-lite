@@ -4,7 +4,7 @@ import { register } from './peaches/register';
 import { wall } from './peaches/wall';
 // import { barrier } from './peaches/barrier';
 import { addRoutes, onNavigate } from './router/index.js';
-import './router/firebase.js';
+// import './router/firebase.js';
 
 addRoutes({
   '/': home,
