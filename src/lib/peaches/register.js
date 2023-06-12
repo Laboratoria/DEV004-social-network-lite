@@ -1,6 +1,8 @@
-import { onNavigate } from "../router";
+import { onNavigate } from "../router/index.js";
 //importar funcion register con el nombre createUser
 import { register as createUser } from "../services.js";
+import { auth } from "../router/firebase.js";
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js"
 
 export const register = () => {
   const div = document.createElement("div");
@@ -42,28 +44,34 @@ export const register = () => {
 </form>`;
 
   const botonEnviar = div.querySelector("#botonEnviar");
-  botonEnviar.addEventListener("click", () => {
+  botonEnviar.addEventListener("click", async (e) => {
+    e.preventDefault();
     // llama funcion navigate y pasa string con la ruta
     console.log("click");
     //Paso 1: Obtener valor del input de email
-    const e = document.querySelector("#emailRegistro").value;
+    const email = document.querySelector("#emailRegistro").value;
     //Para que usaste el document.querySelector? que hace el document.querySelector?
     //Porque le envias como argument al document.querySelector #emailRegistro ?
     //Para que usas el .value ?
 
     //Paso 2: Obtener valor del input de password
-    const p = document.querySelector("#passwordRegistro").value;
+    const password = document.querySelector("#passwordRegistro").value;
+    console.log (password)
     try {
+     const userCredentials = await createUserWithEmailAndPassword( auth, email, password)
+     // console.log(userCredentials);
+      createUser(email, password);
+      onNavigate("/");
       //try = intentar
       //paso 3: llamar function register
-      const resultadRegister = createUser(e, p); //lanzar error
+      /*const resultadRegister = createUser(email, password);*/ //lanzar error
       //Paso 4. Si resultadRegister es true entonces redireccionar al login
 
-      if (resultadRegister) {
+     /* if (resultadRegister) {
         onNavigate("/");
-      }
-    } catch (e) {
-      console.log(e)
+      }*/
+    } catch (error) {
+      console.log(error)
       //atrapar
       //Paso 5 Si resultadRegister no es true entonces mostrar alert al usuario
       const mensajeDiv = document.querySelector("#mensaje");

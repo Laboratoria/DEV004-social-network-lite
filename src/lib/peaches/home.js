@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js"
 import {auth} from '../router/firebase.js'
 import { onNavigate } from "../router/index.js";
 import { login } from "../services.js";
@@ -64,15 +64,15 @@ export const home = () => {
        </div>
        <!-- BOTON 2 -->  <!--estructura de diseño de tres filas utilizando Bootstrap--> 
        <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-           <input id="btnSingin" class="btn btn-init btn2" type="button" value="Iniciar sesión">
-         </div>
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <button id="btnSingin" class="btn btn-init btn2">Iniciar sesión</button>
        </div>
-       <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-           <input id="btnSingup" class="btn btn-init btn2" type="button" value="registro">
-         </div>
+     </div>
+     <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+           <button id="btnSingup" class="btn btn-init btn2">registro</button>
        </div>
+     </div>
        <!-- PREGUNTA -->
        <div class="row">
          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
@@ -116,36 +116,56 @@ export const home = () => {
     
 </div>`;
   const inputLogin = div.querySelector("#btnSingin");
-  inputLogin.addEventListener("click", async () => {
+  inputLogin.addEventListener("click", async (e) => {
+    e.preventDefault();
     // llama funcion navigate y pasa string con la ruta
     //Paso 1: Obtener el valor del input de email
     const email = document.querySelector("#email").value;
     console.log (email)
     //const e = ....
     //Paso 2: Obtener el valor del input de password
-    const p = document.querySelector("#password").value;
-    console.log (p)
+    const password = document.querySelector("#password").value;
+    console.log (password)
 
     try{
-      userCredentials = await createUserWithEmailAndPassword( auth, email, p)
-      console.log(userCredentials);
+      console.log('entroelTry')
+      
+      //Paso 3: Llamar la funcion login
+    const resultadoLogin = login(email, password);
+    console.log(resultadoLogin)
+    //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
+    console.log(resultadoLogin)
+    if (resultadoLogin === true){
+     // onNavigate('/wall');
+     window.location.href = '/wall';
+    }
+    else {
+      alert('verifica tus datos')
+    }
+
+
      } catch(error) {
       console.log(error)
-     }
+      alert('Ha ocurrido un error al crear el usuario. Verifica tus datos e intenta nuevamente.');
+    }
+     
+
+    
+    /*if (userCredentials && userCredentials.user) {
+      onNavigate('/wall');
+    }
     //const p == .....
     //Paso 3: Llamar la funcion login
-    const resultadoLogin = login(email, p);
+    /*const resultadoLogin = login(email, password);
     console.log(resultadoLogin)
     //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
     
 
-    if (resultadoLogin === true){
-      onNavigate('/wall')
-    }
+    
     //Paso 5: Si resultadoLogin es false entonces mostrar alerta
     else {
       alert('verifica tus datos')
-    }
+    }*/
 
    
 

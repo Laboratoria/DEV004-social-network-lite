@@ -4,6 +4,7 @@
 export const init = () => {
   localStorage.clear();
 }
+  
 
 /*
   This function should return true if the user exists
@@ -11,6 +12,7 @@ export const init = () => {
 */
 export const login = (email, password) => {
   const usersStr = localStorage.getItem("users");
+  console.log (usersStr)
   if(usersStr){
     const users = JSON.parse(usersStr);
     const user = users.find(user => user.email === email && user.password === password);
