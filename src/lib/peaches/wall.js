@@ -1,4 +1,5 @@
 import { createPost, getPosts, deletePost, editPost } from "../services.js";
+import { app, auth, db } from "../router/firebase.js";
 export const wall = () => {
   const Container = document.createElement("section");
   Container.innerHTML = `<textarea id="texto"></textarea>

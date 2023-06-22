@@ -60,7 +60,7 @@ export const register = () => {
     try {
      const userCredentials = await createUserWithEmailAndPassword( auth, email, password)
      // console.log(userCredentials);
-      createUser(email, password);
+      //createUser(email, password);
       onNavigate("/");
       //try = intentar
       //paso 3: llamar function register
