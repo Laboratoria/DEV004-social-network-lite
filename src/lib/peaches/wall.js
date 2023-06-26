@@ -36,6 +36,22 @@ export const wall = () => {
   const dibujarPosts = () => {
     listaDePost.innerHTML = '';
 
+
+
+   /* const db = getFirestore();
+
+
+try {
+  const docRef = await addDoc(collection(db, "users"), {
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+  });
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
+}*/
+
     const arrayDePost = getPosts();
     //console.log(arrayDePost)
     // recorrer arraDePots for, forEach, map
@@ -139,6 +155,7 @@ export const wall = () => {
     //     var texto = document.getElementById("texto").value;
     //     alert("El texto que has introducido es: " + texto)
     // }
+    
 
     dibujarPosts();
 

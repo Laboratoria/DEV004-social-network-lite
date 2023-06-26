@@ -2,7 +2,7 @@ import { onNavigate } from "../router/index.js";
 //importar funcion register con el nombre createUser
 import { register as createUser } from "../services.js";
 import { auth } from "../router/firebase.js";
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js"
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"
 
 export const register = () => {
   const div = document.createElement("div");

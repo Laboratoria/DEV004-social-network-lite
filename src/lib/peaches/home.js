@@ -148,6 +148,8 @@ export const home = () => {
       console.log(error)
       alert('Ha ocurrido un error al crear el usuario. Verifica tus datos e intenta nuevamente.');
     }
+
+    
      
 
     
