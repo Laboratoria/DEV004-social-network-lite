@@ -18,7 +18,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+console.log (getFirestore)
+
+
+  const agrearcolettion =  (post) => {addDoc(collection(db, "users"), {
+    post
+  });
+}
+  
 
 
 
-export { app, auth, db };
+
+export { app, auth, agrearcolettion };

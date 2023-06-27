@@ -43,43 +43,44 @@ export const register = () => {
 </div>
 </form>`;
 
+  /* aqui Busco dentro del elemento 'div' un elemento con el identificador 
+  único '#botonEnviar' y le asigno a la constante 'botonEnviar'.*/
   const botonEnviar = div.querySelector("#botonEnviar");
+  /* Agrega un event listener al elemento 'botonEnviar' para el evento de "click". 
+  Cuando se produce el evento, se ejecuta la función de callback de manera asíncrona.*/
   botonEnviar.addEventListener("click", async (e) => {
+    // Evita que el evento de "click" recargue la página.
     e.preventDefault();
-    // llama funcion navigate y pasa string con la ruta
+
     console.log("click");
-    //Paso 1: Obtener valor del input de email
+    // Obtiene el valor del elemento con el identificador único '#emailRegistro' y lo asigna a la constante 'email'.
     const email = document.querySelector("#emailRegistro").value;
-    //Para que usaste el document.querySelector? que hace el document.querySelector?
-    //Porque le envias como argument al document.querySelector #emailRegistro ?
-    //Para que usas el .value ?
 
-    //Paso 2: Obtener valor del input de password
+
+    // Obtiene el valor del elemento con el identificador único '#passwordRegistro' y lo asigna a la constante 'password'.
     const password = document.querySelector("#passwordRegistro").value;
-    console.log (password)
+    console.log(password)
+    ChatGPT
+    //  ejecuto el bloque de código dentro del 'try'. 
     try {
-     const userCredentials = await createUserWithEmailAndPassword( auth, email, password)
-     // console.log(userCredentials);
-      //createUser(email, password);
+      /* aqui Llamo a la función 'createUserWithEmailAndPassword' con los parámetros 'auth', 'email' y 'password',
+       y espero a que la operación se complete de forma asíncrona. El resultado de la operación se guarda en la constante 'userCredentials'.*/
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+      // Navego a la ruta "/" utilizando la función 'onNavigate' después de que se haya completado exitosamente el registro del usuario.
       onNavigate("/");
-      //try = intentar
-      //paso 3: llamar function register
-      /*const resultadRegister = createUser(email, password);*/ //lanzar error
-      //Paso 4. Si resultadRegister es true entonces redireccionar al login
-
-     /* if (resultadRegister) {
-        onNavigate("/");
-      }*/
+      // Navega a la ruta "/" utilizando la función 'onNavigate' después de que se haya completado exitosamente el registro del usuario.
     } catch (error) {
       console.log(error)
-      //atrapar
-      //Paso 5 Si resultadRegister no es true entonces mostrar alert al usuario
+
+      // se Busca el elemento con el identificador único '#mensaje' y lo asigna a la constante 'mensajeDiv'.
       const mensajeDiv = document.querySelector("#mensaje");
+      /* Actualiza el contenido de 'mensajeDiv' con el texto "No se pudo completar el registro. Por favor, inténtalo de nuevo."
+       utilizando la propiedad 'textContent'.*/
       mensajeDiv.textContent =
         "No se pudo completar el registro. Por favor, inténtalo de nuevo.";
     }
   });
 
-  //const inputRegistro = document.getElemen
+
   return div;
 };

@@ -1,5 +1,6 @@
 import { createPost, getPosts, deletePost, editPost } from "../services.js";
-import { app, auth, db } from "../router/firebase.js";
+import { app, auth, agrearcolettion } from "../router/firebase.js";
+
 export const wall = () => {
   const Container = document.createElement("section");
   Container.innerHTML = `<textarea id="texto"></textarea>
@@ -11,12 +12,14 @@ export const wall = () => {
   // button id publicar añadirle addEventListener
   const btnPublicar = Container.querySelector("#publicar");
   btnPublicar.addEventListener("click", () => {
-    // capturar el valor de text area (id texto)
-    // const e =......
+    // se captura el valor de text area (id texto)
+    // 
     const texto = document.querySelector("#texto").value;
     console.log(texto);
-    // hacer console.log (e)
-    // Traer email del localstorage
+    
+    agrearcolettion (texto)
+    // se hace con console.log (e)
+    // se Traer email del localstorage
     const email = JSON.parse(localStorage.getItem("user"));
     // hacer console.log (email)
     // console.log(email['email'], email.email, '***');
@@ -36,25 +39,9 @@ export const wall = () => {
   const dibujarPosts = () => {
     listaDePost.innerHTML = '';
 
-
-
-   /* const db = getFirestore();
-
-
-try {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
-  });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-}*/
-
     const arrayDePost = getPosts();
     //console.log(arrayDePost)
-    // recorrer arraDePots for, forEach, map
+    // recorrer arraDePots con for, forEach, map
     /********** SOLUCION FOREACH *********/
     arrayDePost.forEach((post) => {
       // dentro del bucle crear una etique p
@@ -63,9 +50,9 @@ try {
       btnDelete.textContent = "Eliminar";
       btnDelete.value = post.id;
       //console.log(post);
-      // añadir a etiqueta p texto del post
+      // se añadie a etiqueta p texto del post
       p.textContent = post.content;
-      
+
       btnDelete.addEventListener("click", (event) => {
         // console.log(event.target.value);
         // aqui estoy Obteniendo el ID del post a eliminar desde el atributo 'data-post-id'
@@ -90,8 +77,8 @@ try {
       //aqui se establece el valor del botón y el valor  se obtiene de la variable post.id
       btnEdit.value = post.id;
       //aqui listaDePost.append utilizo para insertar un párrafo y un botón al final del elemento
-      listaDePost.append(p, btnEdit , btnDelete );
-   
+      listaDePost.append(p, btnEdit, btnDelete);
+
       btnEdit.addEventListener("click", (event) => {
         const postId = event.target.value;
         const newContent = prompt("Ingrese el nuevo contenido:");
@@ -106,59 +93,12 @@ try {
       });
     });
 
-    // Agrega un botón para eliminar el post
-    // const deleteButton = document.createElement("button");
-    // deleteButton.textContent = "Eliminar";
-    //deleteButton.addEventListener("click", () => {
-    // Lógica para eliminar el post*/
-    //})
-
-    // este es para tener el botón por su ID
-    // const deleteButton = document.querySelectorAll('.deleteButton');
-    // console.log(deleteButton);
-
-    // // aqio estou Asignando el evento click al botón y definiendo una función
-    // deleteButton.addEventListener('click', (event) => {
-    //   // aqui estoy Obteniendo el ID del post a eliminar desde el atributo 'data-post-id'
-    //   const postId = event.target.dataset.postId;
-
-    //   try {
-    //     // aqui se Llama a la función deletePost para eliminar el post
-    //     deletePost(postId);
-    //     // aquie el un mensaje de paso exitoso
-    //     console.log('El post fue eliminado exitosamente.');
-    //   } catch (error) {
-    //     // aquie que muestre el mensaje de error en la consola
-    //     console.error(error.message);
-    //   }
-    // });
-    // Agrega el botón de eliminar al artículo
-    /*listaDePost.appendChild(deleteButton);
-});
-  /********** SOLUCION FOR *********/
-    //   for (let i = 0; i < arrayDePost.length; i++) {
-    //     const post = arrayDePost[i];
-    //     const p = document.createElement("p"); // Crear una etiqueta <p>
-    //     p.textContent = post.content;
-    //     console.log(post.content, 'post');
-    //     listaDePost.appendChild(p)
-    // }
-
     Container.appendChild(listaDePost);
   };
 
-    // Objetos y arreglos revisar,estudiar, investigar, ejemplos
-    // estructura al post section>p+botonpara eliminar
 
-    // Revises objetos en js
-    //   function publicar() {
-    //     var texto = document.getElementById("texto").value;
-    //     alert("El texto que has introducido es: " + texto)
-    // }
-    
+  dibujarPosts();
 
-    dibujarPosts();
-
-    return Container;
-  };
+  return Container;
+};
 

@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js"
-import {auth} from '../router/firebase.js'
+import { auth } from '../router/firebase.js'
 import { onNavigate } from "../router/index.js";
 import { login } from "../services.js";
 
@@ -121,66 +121,48 @@ export const home = () => {
     // llama funcion navigate y pasa string con la ruta
     //Paso 1: Obtener el valor del input de email
     const email = document.querySelector("#email").value;
-    console.log (email)
+    console.log(email)
     //const e = ....
     //Paso 2: Obtener el valor del input de password
     const password = document.querySelector("#password").value;
-    console.log (password)
+    console.log(password)
 
-    try{
+    try {
       console.log('entroelTry')
-      
+
       //Paso 3: Llamar la funcion login
-    const resultadoLogin = login(email, password);
-    console.log(resultadoLogin)
-    //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
-    console.log(resultadoLogin)
-    if (resultadoLogin === true){
-     // onNavigate('/wall');
-     window.location.href = '/wall';
-    }
-    else {
-      alert('verifica tus datos')
-    }
+      const resultadoLogin = login(email, password);
+      console.log(resultadoLogin)
+      //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
+      console.log(resultadoLogin)
+      if (resultadoLogin === true) {
+        // onNavigate('/wall');
+        window.location.href = '/wall';
+      }
+      else {
+        alert('verifica tus datos')
+      }
 
 
-     } catch(error) {
+    } catch (error) {
       console.log(error)
       alert('Ha ocurrido un error al crear el usuario. Verifica tus datos e intenta nuevamente.');
     }
 
-    
-     
-
-    
-    /*if (userCredentials && userCredentials.user) {
-      onNavigate('/wall');
-    }
-    //const p == .....
-    //Paso 3: Llamar la funcion login
-    /*const resultadoLogin = login(email, password);
-    console.log(resultadoLogin)
-    //Paso 4: Si resultadoLogin es true entonces redireccionar al muro
-    
-
-    
-    //Paso 5: Si resultadoLogin es false entonces mostrar alerta
-    else {
-      alert('verifica tus datos')
-    }*/
-
-   
 
   });
-  //const inputRegistro = document.getElementById ("btnSingup")
+  // aqui Busco dentro del elemento 'div' un elemento con el identificador único '#btnSingup' y le asigna a la constante 'inputRegistro'.
   const inputRegistro = div.querySelector("#btnSingup");
+  /* se Agrega un event listener al elemento 'inputRegistro' para el evento de "click". 
+  Cuando se produce el evento, se ejecuta la función de callback.*/
   inputRegistro.addEventListener("click", () => {
-    // llama funcion navigate y pasa string con la ruta
+    /*Se llama a la función 'onNavigate' con el argumento "/register", 
+    que maneja la navegación y muestra el contenido asociado a la ruta "/register".*/
     onNavigate("/register");
 
-  
+
   });
 
-  
+
   return div;
 };
