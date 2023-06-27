@@ -1,15 +1,9 @@
-/*
-  This function should clear all data from local storage
-*/
-export const init = () => {
-  localStorage.clear();
-}
-  
-
-/*
-  This function should return true if the user exists
-  It should return false if the user does not exist
-*/
+/**
+ * recibe email y password para loguear
+ * @param {*} email 
+ * @param {*} password 
+ * @returns boolean
+ */
 export const login = (email, password) => {
   const usersStr = localStorage.getItem("users");
   console.log (usersStr)

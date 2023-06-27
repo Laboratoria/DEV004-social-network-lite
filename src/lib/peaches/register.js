@@ -60,7 +60,7 @@ export const register = () => {
     // Obtiene el valor del elemento con el identificador único '#passwordRegistro' y lo asigna a la constante 'password'.
     const password = document.querySelector("#passwordRegistro").value;
     console.log(password)
-    ChatGPT
+  
     //  ejecuto el bloque de código dentro del 'try'. 
     try {
       /* aqui Llamo a la función 'createUserWithEmailAndPassword' con los parámetros 'auth', 'email' y 'password',
